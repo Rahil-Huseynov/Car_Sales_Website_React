@@ -1,0 +1,13 @@
+.CarFilter {
+    display: grid;
+    position: sticky;
+    top: 10%;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+}
+
+.carFilterItems {
+    display: grid;
+    text-align: center;
+}

@@ -1,0 +1,61 @@
+.car-details {
+    margin: 0 auto;
+}
+
+.PriceContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.price {
+    border: 1px solid darkblue;
+    padding: 1rem;
+    background-color: darkblue;
+    border-radius: 10px;
+    font-size: 2rem;
+
+}
+
+.img_container {
+    display: flex;
+    justify-content: center;
+}
+
+.make_model_container {
+    text-align: center;
+}
+
+.year {
+    padding: 1rem;
+    font-weight: 800;
+    font-size: 2rem;
+    color: red;
+}
+
+table,
+th,
+td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+.table_items_container {
+    display: flex;
+}
+
+.table_items {
+    display: grid;
+    text-align: center;
+    width: 500px;
+}
+
+.table_item {
+    padding: 1rem;
+}
+
+.table_item_container{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+}
