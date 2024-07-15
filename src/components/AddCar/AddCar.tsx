@@ -2,7 +2,6 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { addCar } from '../../redux/slices/carSlices';
 import { Link } from 'react-router-dom';
-import HomePage from '../../assets/home.png';
 import './AddCar.css';
 import AddImG from '../../assets/add_img.webp';
 import Logo from '../../assets/car.jpg';
@@ -43,7 +42,7 @@ const AddCar = () => {
         image: '',
     });
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         if (name === "features") {
             setCar(prevCar => ({ ...prevCar, features: value.split(',') }));
@@ -82,7 +81,6 @@ const AddCar = () => {
             image: '',
         });
     };
-
     return (
         <>
             <div className='all_items_container'>
@@ -104,7 +102,21 @@ const AddCar = () => {
                 <div className='make_model_container'>
                     <div className='make_model'>
                         <h2>Make:</h2>
-                        <input className='input' name="make" value={car.make} onChange={handleChange} placeholder="Make" />
+                        <select className='input' name="make" id="cars" value={car.make} onChange={handleChange}>
+                            <option value="">All</option>
+                            <option value="honda">Honda</option>
+                            <option value="toyota">Toyota</option>
+                            <option value="mercedes-benz">Mercedes-Benz</option>
+                            <option value="audi">Audi</option>
+                            <option value="chevrolet">Chevrolet</option>
+                            <option value="nissan">Nissan</option>
+                            <option value="bmw">BMW</option>
+                            <option value="tesla">Tesla</option>
+                            <option value="subaru">Subaru</option>
+                            <option value="lexus">Lexus</option>
+                            <option value="Jeep">Jeep</option>
+                            <option value="kia">Kia</option>
+                        </select>
                     </div>
                     <div className='make_model'>
                         <h2>Model:</h2>
@@ -141,7 +153,16 @@ const AddCar = () => {
                                 <td className='table_item'>Owners</td>
                             </tr>
                             <tr className='table_items'>
-                                <input name="color" value={car.color} onChange={handleChange} placeholder="Color" />
+                                <select name="color" value={car.color} onChange={handleChange} >
+                                    <option value="">Select Color</option>
+                                    <option value="white">White</option>
+                                    <option value="silver">Silver</option>
+                                    <option value="blue">Blue</option>
+                                    <option value="red">Red</option>
+                                    <option value="green">Green</option>
+                                    <option value="black">Black</option>
+                                    <option value="gray">Gray</option>
+                                </select>
                                 <input name="mileage" className="type_number_input" type="number" value={car.mileage} onChange={handleChange} placeholder="Mileage" />
                                 <input name="fuelType" value={car.fuelType} onChange={handleChange} placeholder="Fuel Type" />
                                 <input name="transmission" value={car.transmission} onChange={handleChange} placeholder="Transmission" />
@@ -155,9 +176,9 @@ const AddCar = () => {
                 </div>
                 <div className='send_button'>
                     <button className='button' type="submit" onClick={handleSubmit}>Add Car</button>
-                    <Link to='/'> <button className='button' type="submit">Return Home</button></Link>
+                    <Link to='/'> <button className='button' type="button">Return Home</button></Link>
                 </div>
-            </div>
+            </div >
         </>
     );
 };
