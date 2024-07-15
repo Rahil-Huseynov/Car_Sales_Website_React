@@ -55,6 +55,7 @@ const CarDetailsFilter: React.FC<CarDetailsFilterProps> = ({ onFilterChange }) =
     <div className="CarFilter">
       <div className='carFilterItems'>
         <p>Make:</p>
+        <div className="custom-select">
         <select name="make" id="cars" value={make} onChange={handleMakeChange}>
           <option value="">All</option>
           <option value="honda">Honda</option>
@@ -70,6 +71,7 @@ const CarDetailsFilter: React.FC<CarDetailsFilterProps> = ({ onFilterChange }) =
           <option value="Jeep">Jeep</option>
           <option value="kia">Kia</option>
         </select>
+        </div>
       </div>
 
       <div className='carFilterItems'>
@@ -80,21 +82,23 @@ const CarDetailsFilter: React.FC<CarDetailsFilterProps> = ({ onFilterChange }) =
 
       <div className='carFilterItems'>
         <p>Color:</p>
-        <select name="color" id="colors" value={color} onChange={handleColorChange}>
-          <option value="">All</option>
-          <option value="white">White</option>
-          <option value="silver">Silver</option>
-          <option value="blue">Blue</option>
-          <option value="red">Red</option>
-          <option value="green">Green</option>
-          <option value="black">Black</option>
-          <option value="gray">Gray</option>
-        </select>
+        <div className="custom-select">
+          <select name="color" id="colors" value={color} onChange={handleColorChange}>
+            <option value="">All</option>
+            <option value="white">White</option>
+            <option value="silver">Silver</option>
+            <option value="blue">Blue</option>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="black">Black</option>
+            <option value="gray">Gray</option>
+          </select>
+        </div>
       </div>
 
       <div className='carFilterItems'>
         <p>Year:</p>
-        <input type="range" min="2000" max="2023" step="1" value={year} onChange={handleYearChange} />
+        <input type="range" min="2000" max="2024" step="1" value={year} onChange={handleYearChange} />
         <output>{year}</output>
       </div>
       <div className='AddCar_container'>
@@ -102,7 +106,7 @@ const CarDetailsFilter: React.FC<CarDetailsFilterProps> = ({ onFilterChange }) =
           <img style={{ width: '50px' }} src={AddCar} />
         </Link>
       </div>
-    </div>
+    </div >
   );
 };
 

@@ -25,9 +25,12 @@ interface Filters {
 
 const App = () => {
   const { } = useGetCarQuery();
+
   const carList = useAppSelector(state => state.cars.cars);
+  
   const maxPrice = 99999;
-  const maxYear = 2023;
+  
+  const maxYear = 2024;
 
   const [filteredCars, setFilteredCars] = useState<Car[]>(carList);
 
@@ -62,14 +65,16 @@ const App = () => {
   return (
     <>
       <div className='all_items_container'>
-        <div className='logo_container'>
-          <div>
-            <img className='logo_img' src={Logo} alt="Logo" />
+        <a href='/' style={{ textDecoration: 'none' }}>
+          <div className='logo_container'>
+            <div>
+              <img className='logo_img' src={Logo} alt="Logo" />
+            </div>
+            <div>
+              <span className='website_name'>TURBOCAR.AZ</span>
+            </div>
           </div>
-          <div>
-            <span className='website_name'>TURBOCAR.AZ</span>
-          </div>
-        </div>
+        </a>
 
         <div className='items_container'>
           <div className='filter_components_container'>

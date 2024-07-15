@@ -83,16 +83,18 @@ const AddCar = () => {
     };
     return (
         <>
-            <div className='all_items_container'>
-                <div className='logo_container'>
-                    <div>
-                        <img className='logo_img' src={Logo} alt="Logo" />
-                    </div>
-                    <div>
-                        <span className='website_name'>TURBOCAR.AZ</span>
+            <Link style={{ textDecoration: 'none' }} to='/'>
+                <div className='all_items_container'>
+                    <div className='logo_container'>
+                        <div>
+                            <img className='logo_img' src={Logo} alt="Logo" />
+                        </div>
+                        <div>
+                            <span className='website_name'>TURBOCAR.AZ</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Link >
 
             <div className="car-details">
                 <div className='img_container'>
@@ -102,8 +104,11 @@ const AddCar = () => {
                 <div className='make_model_container'>
                     <div className='make_model'>
                         <h2>Make:</h2>
-                        <select className='input' name="make" id="cars" value={car.make} onChange={handleChange}>
-                            <option value="">All</option>
+                        <h2>Model:</h2>
+                    </div>
+                    <div className='make_model1'>
+                        <select className='input custom-select_add_car' name="make" id="cars" value={car.make} onChange={handleChange}>
+                            <option value="">Choose the car make</option>
                             <option value="honda">Honda</option>
                             <option value="toyota">Toyota</option>
                             <option value="mercedes-benz">Mercedes-Benz</option>
@@ -117,9 +122,6 @@ const AddCar = () => {
                             <option value="Jeep">Jeep</option>
                             <option value="kia">Kia</option>
                         </select>
-                    </div>
-                    <div className='make_model'>
-                        <h2>Model:</h2>
                         <input className='input' name="model" value={car.model} onChange={handleChange} placeholder="Model" />
                     </div>
                 </div>
@@ -152,17 +154,17 @@ const AddCar = () => {
                                 <td className='table_item'>Features</td>
                                 <td className='table_item'>Owners</td>
                             </tr>
-                            <tr className='table_items'>
-                                <select name="color" value={car.color} onChange={handleChange} >
-                                    <option value="">Select Color</option>
-                                    <option value="white">White</option>
-                                    <option value="silver">Silver</option>
-                                    <option value="blue">Blue</option>
-                                    <option value="red">Red</option>
-                                    <option value="green">Green</option>
-                                    <option value="black">Black</option>
-                                    <option value="gray">Gray</option>
-                                </select>
+                            <tr className='table_items' >
+                                    <select className='custom-select_add_car' name="color" value={car.color} onChange={handleChange} >
+                                        <option value="">Select Color</option>
+                                        <option value="white">White</option>
+                                        <option value="silver">Silver</option>
+                                        <option value="blue">Blue</option>
+                                        <option value="red">Red</option>
+                                        <option value="green">Green</option>
+                                        <option value="black">Black</option>
+                                        <option value="gray">Gray</option>
+                                    </select>
                                 <input name="mileage" className="type_number_input" type="number" value={car.mileage} onChange={handleChange} placeholder="Mileage" />
                                 <input name="fuelType" value={car.fuelType} onChange={handleChange} placeholder="Fuel Type" />
                                 <input name="transmission" value={car.transmission} onChange={handleChange} placeholder="Transmission" />

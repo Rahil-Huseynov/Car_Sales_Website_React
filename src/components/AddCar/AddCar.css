@@ -42,14 +42,24 @@ td {
 }
 
 .make_model_container {
-    margin: 2rem;
-}
-
-.make_model {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 2rem;
+    padding-top: 2rem;
+}
+
+.make_model {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.make_model1 {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
 }
 
 .year_price {
@@ -92,8 +102,32 @@ td {
     transition: all .1s ease-in-out;
 }
 
-.type_number_input::-webkit-outer-spin-button,
-.type_number_input::-webkit-inner-spin-button {
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.website_name {
+    color: white;
+}
+
+
+.custom-select_add_car {
+    position: relative;
+}
+
+.custom-select_add_car {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 2px;
+    background-color: #3B3B3B;
+    border: 1px solid #ACACAC;
+    color: #FFFFFF;
+    cursor: pointer;
+    outline: none;
+}
+
+.custom-select_add_car:focus {
+    background: #3B3B3B;
 }
