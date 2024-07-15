@@ -22,7 +22,7 @@ input[type="range"] {
     appearance: none;
     background: transparent;
     cursor: pointer;
-    width: 9rem;
+    width: 12rem;
   }
   
   input[type="range"]:focus {
@@ -77,7 +77,7 @@ input[type="range"] {
 .custom-select select {
 	appearance: none;
 	-webkit-appearance: none;
-	width: 150px;
+	width: 200px;
 	font-size: 18px;
 	padding: 5px 13px 5px 13px;
 	background-color: #008EBD;
