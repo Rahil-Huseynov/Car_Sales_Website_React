@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { carApi } from "../../services/carApi";
 
 interface ICar {
@@ -29,7 +29,11 @@ const initialState: ICars = {
 const carsSlice = createSlice({
   name: "CarSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    addCar: (state, action: PayloadAction<ICar>) => {
+      state.cars.push(action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder.addMatcher(
       carApi.endpoints.getCar.matchFulfilled,
@@ -40,5 +44,5 @@ const carsSlice = createSlice({
   },
 });
 
-
+export const { addCar } = carsSlice.actions;
 export default carsSlice.reducer;

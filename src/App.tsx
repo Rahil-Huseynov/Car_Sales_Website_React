@@ -1,10 +1,10 @@
-import { Link, Outlet } from 'react-router-dom';
-import './App.css';
+import { useState, useEffect } from 'react';
 import { useGetCarQuery } from './services/carApi';
+import { useAppSelector } from './redux/hooks';
+import { Link, Outlet } from 'react-router-dom';
 import Logo from './assets/car.jpg';
 import CarDetailsFilter from './components/CarDetailsFilter/CarDetailsFilter';
-import { useState, useEffect } from 'react';
-import { useAppSelector } from './redux/hooks';
+import './App.css';
 
 interface Car {
   id: number;
@@ -25,16 +25,16 @@ interface Filters {
 
 const App = () => {
   const { } = useGetCarQuery();
-  const car = useAppSelector(state => state.cars.cars);
-
+  const carList = useAppSelector(state => state.cars.cars);
   const maxPrice = 99999;
   const maxYear = 2023;
 
-  const [filteredCars, setFilteredCars] = useState<Car[]>(car);
+  const [filteredCars, setFilteredCars] = useState<Car[]>(carList);
+
   const [filters, setFilters] = useState<Filters>({ make: '', price: maxPrice, color: '', year: maxYear });
 
   useEffect(() => {
-    let filtered = car;
+    let filtered = carList;
 
     if (filters.make) {
       filtered = filtered.filter((car: Car) => car.make.toLowerCase() === filters.make.toLowerCase());
@@ -53,7 +53,7 @@ const App = () => {
     }
 
     setFilteredCars(filtered);
-  }, [filters, car]);
+  }, [filters, carList]);
 
   const handleFilterChange = (newFilters: Partial<Filters>) => {
     setFilters(prevFilters => ({ ...prevFilters, ...newFilters }));
@@ -83,7 +83,7 @@ const App = () => {
                   <div className='container_items_item hover' key={car.id}>
                     <Link style={{ textDecoration: 'none' }} to={`/car/${car.id}`}>
                       <div className='items'>
-                        <img style={{ width: '200px' }} src={car.image} />
+                        <img style={{ width: '200px' }} src={car.image} alt={`${car.make} ${car.model}`} />
                         <h3>{car.make} {car.model}</h3>
                         <p>Year: {car.year}</p>
                         <p>Color: {car.color}</p>

@@ -1,0 +1,99 @@
+table,
+th,
+td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+.table_items_container {
+    display: flex;
+}
+
+.table_items {
+    display: grid;
+    text-align: center;
+    width: 500px;
+}
+
+.table_item {
+    padding: 1rem;
+}
+
+.table_item_container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+}
+
+.img_profil {
+    border: 1px solid red;
+    width: 300px;
+    height: 250px;
+    background-image: url('https://cdn.pixabay.com/photo/2017/11/10/05/24/add-2935429_960_720.png');
+    background-clip: content-box;
+    background-size: cover;
+}
+
+.img_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.make_model_container {
+    margin: 2rem;
+}
+
+.make_model {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.year_price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    height: 100px;
+    margin-bottom: 2rem;
+}
+
+.input {
+    height: 50px;
+}
+
+.send_button {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+    gap: 2rem;
+}
+
+
+.button {
+    width: 200px;
+    height: 36px;
+    border-radius: 18px;
+    background-color: #1c89ff;
+    border: solid 1px transparent;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+}
+
+.button:hover {
+    background-color: transparent;
+    border-color: #fff;
+    transition: all .1s ease-in-out;
+}
+
+.type_number_input::-webkit-outer-spin-button,
+.type_number_input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

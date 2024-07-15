@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './CarDetailsFilter.css';
+import { Link } from 'react-router-dom';
+import AddCar from '../../assets/plus.png'
 
 interface CarDetailsFilterProps {
   onFilterChange: (filters: Partial<Filters>) => void;
@@ -14,38 +16,38 @@ interface Filters {
 
 const CarDetailsFilter: React.FC<CarDetailsFilterProps> = ({ onFilterChange }) => {
   const [make, setMake] = useState('');
-  
+
   const [price, setPrice] = useState(1000);
-  
+
   const [color, setColor] = useState('');
-  
+
   const [year, setYear] = useState(2000);
 
   const handleMakeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-  
+
     setMake(event.target.value);
-  
+
     onFilterChange({ make: event.target.value });
   };
 
   const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  
+
     setPrice(Number(event.target.value));
-  
+
     onFilterChange({ price: Number(event.target.value) });
   };
 
   const handleColorChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-  
+
     setColor(event.target.value);
-  
+
     onFilterChange({ color: event.target.value });
   };
 
   const handleYearChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  
+
     setYear(Number(event.target.value));
-  
+
     onFilterChange({ year: Number(event.target.value) });
   };
 
@@ -94,6 +96,11 @@ const CarDetailsFilter: React.FC<CarDetailsFilterProps> = ({ onFilterChange }) =
         <p>Year:</p>
         <input type="range" min="2000" max="2023" step="1" value={year} onChange={handleYearChange} />
         <output>{year}</output>
+      </div>
+      <div className='AddCar_container'>
+        <Link to='/car/addcar'>
+          <img style={{ width: '50px' }} src={AddCar} />
+        </Link>
       </div>
     </div>
   );
