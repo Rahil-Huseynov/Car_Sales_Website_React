@@ -24,12 +24,13 @@ interface Filters {
 }
 
 const App = () => {
-  const { } = useGetCarQuery();
+  
+  const {} = useGetCarQuery();
 
   const carList = useAppSelector(state => state.cars.cars);
   
   const maxPrice = 99999;
-  
+
   const maxYear = 2024;
 
   const [filteredCars, setFilteredCars] = useState<Car[]>(carList);
@@ -57,6 +58,10 @@ const App = () => {
 
     setFilteredCars(filtered);
   }, [filters, carList]);
+
+  useEffect(() => {
+    setFilteredCars(carList);
+  }, [carList]);
 
   const handleFilterChange = (newFilters: Partial<Filters>) => {
     setFilters(prevFilters => ({ ...prevFilters, ...newFilters }));

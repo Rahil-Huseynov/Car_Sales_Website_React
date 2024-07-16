@@ -20,18 +20,25 @@ interface ICar {
 
 interface ICars {
   cars: ICar[];
+  nextId: number;
 }
 
 const initialState: ICars = {
   cars: [],
+  nextId: 31,
 };
 
 const carsSlice = createSlice({
   name: "CarSlice",
   initialState,
   reducers: {
-    addCar: (state, action: PayloadAction<ICar>) => {
-      state.cars.push(action.payload);
+    addCar: (state, action: PayloadAction<Omit<ICar, 'id'>>) => {
+      const newCar = {
+        ...action.payload,
+        id: state.nextId,
+      };
+      state.cars.push(newCar);
+      state.nextId += 1;
     },
   },
   extraReducers: (builder) => {

@@ -7,7 +7,6 @@ import AddImG from '../../assets/add_img.webp';
 import Logo from '../../assets/car.jpg';
 
 interface ICar {
-    id: number;
     make: string;
     model: string;
     year: number;
@@ -25,9 +24,10 @@ interface ICar {
 
 const AddCar = () => {
     const dispatch = useDispatch();
+
     const [error, setError] = useState<string | null>(null);
+
     const [car, setCar] = useState<ICar>({
-        id: 0,
         make: '',
         model: '',
         year: 2020,
@@ -46,7 +46,7 @@ const AddCar = () => {
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         if (name === "features") {
-            setCar(prevCar => ({ ...prevCar, features: value.split(',') }));
+            setCar(prevCar => ({ ...prevCar, features: value.split(',').map(feature => feature.trim()) }));
         } else {
             setCar(prevCar => ({ ...prevCar, [name]: value }));
         }
@@ -64,31 +64,26 @@ const AddCar = () => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        setCar({
-            id: 0,
-            make: '',
-            model: '',
-            year: 2020,
-            color: '',
-            mileage: 0,
-            price: 0,
-            fuelType: '',
-            transmission: '',
-            engine: '',
-            horsepower: 0,
-            features: [],
-            owners: 0,
-            image: '',
-        });
-
         if (!car.image || !car.make || !car.model || !car.color || !car.fuelType || !car.transmission || !car.engine || car.features.length === 0) {
             setError("Please fill in all required fields.");
-            return;
-        }
-        else {
-            setError('')
+        } else {
+            setError(null);
             dispatch(addCar(car));
-            return;
+            setCar({
+                make: '',
+                model: '',
+                year: 2020,
+                color: '',
+                mileage: 0,
+                price: 0,
+                fuelType: '',
+                transmission: '',
+                engine: '',
+                horsepower: 0,
+                features: [],
+                owners: 0,
+                image: '',
+            });
         }
     };
 
@@ -105,7 +100,7 @@ const AddCar = () => {
                         </div>
                     </div>
                 </div>
-            </Link >
+            </Link>
 
             <div className="car-details">
                 <div className='img_container'>
@@ -119,7 +114,7 @@ const AddCar = () => {
                     </div>
                     <div className='make_model1'>
                         <select className='input custom-select_add_car' name="make" id="cars" value={car.make} onChange={handleChange}>
-                            <option value="" disabled selected>Choose the car make</option>
+                            <option value="" disabled>Choose the car make</option>
                             <option value="honda">Honda</option>
                             <option value="toyota">Toyota</option>
                             <option value="mercedes-benz">Mercedes-Benz</option>
@@ -130,7 +125,7 @@ const AddCar = () => {
                             <option value="tesla">Tesla</option>
                             <option value="subaru">Subaru</option>
                             <option value="lexus">Lexus</option>
-                            <option value="Jeep">Jeep</option>
+                            <option value="jeep">Jeep</option>
                             <option value="kia">Kia</option>
                         </select>
                         <input className='input' name="model" value={car.model} onChange={handleChange} placeholder="Model" />
@@ -167,7 +162,7 @@ const AddCar = () => {
                             </tr>
                             <tr className='table_items'>
                                 <select className='custom-select_add_car' name="color" value={car.color} onChange={handleChange}>
-                                    <option value="" disabled selected>Select Color</option>
+                                    <option value="" disabled>Select Color</option>
                                     <option value="white">White</option>
                                     <option value="silver">Silver</option>
                                     <option value="blue">Blue</option>
@@ -188,10 +183,10 @@ const AddCar = () => {
                     </table>
                 </div>
                 <div className='error-message-container'>
-                    {error && <p className='error-message'>{error}</p>}
+                    <div className="error-message">{error && <p>{error}</p>}</div>
                 </div>
                 <div className='send_button'>
-                    <button className='button' type="submit" onClick={handleSubmit}>Add Car</button>
+                    <button className='button' onClick={handleSubmit}>Add Car</button>
                     <Link to='/'> <button className='button' type="button">Return Home</button></Link>
                 </div>
             </div>
