@@ -54,8 +54,8 @@ const AddCar = () => {
     const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
             const reader = new FileReader();
-            reader.onload = (e) => {
-                setCar(prevCar => ({ ...prevCar, image: e.target?.result as string }));
+            reader.onload = (event) => {
+                setCar(prevCar => ({ ...prevCar, image: event.target?.result as string }));
             };
             reader.readAsDataURL(e.target.files[0]);
         }
@@ -81,6 +81,7 @@ const AddCar = () => {
             image: '',
         });
     };
+
     return (
         <>
             <Link style={{ textDecoration: 'none' }} to='/'>
@@ -108,7 +109,7 @@ const AddCar = () => {
                     </div>
                     <div className='make_model1'>
                         <select className='input custom-select_add_car' name="make" id="cars" value={car.make} onChange={handleChange}>
-                            <option value="">Choose the car make</option>
+                            <option value="" disabled selected>Choose the car make</option>
                             <option value="honda">Honda</option>
                             <option value="toyota">Toyota</option>
                             <option value="mercedes-benz">Mercedes-Benz</option>
@@ -154,23 +155,23 @@ const AddCar = () => {
                                 <td className='table_item'>Features</td>
                                 <td className='table_item'>Owners</td>
                             </tr>
-                            <tr className='table_items' >
-                                    <select className='custom-select_add_car' name="color" value={car.color} onChange={handleChange} >
-                                        <option value="">Select Color</option>
-                                        <option value="white">White</option>
-                                        <option value="silver">Silver</option>
-                                        <option value="blue">Blue</option>
-                                        <option value="red">Red</option>
-                                        <option value="green">Green</option>
-                                        <option value="black">Black</option>
-                                        <option value="gray">Gray</option>
-                                    </select>
+                            <tr className='table_items'>
+                                <select className='custom-select_add_car' name="color" value={car.color} onChange={handleChange}>
+                                    <option value="" disabled selected>Select Color</option>
+                                    <option value="white">White</option>
+                                    <option value="silver">Silver</option>
+                                    <option value="blue">Blue</option>
+                                    <option value="red">Red</option>
+                                    <option value="green">Green</option>
+                                    <option value="black">Black</option>
+                                    <option value="gray">Gray</option>
+                                </select>
                                 <input name="mileage" className="type_number_input" type="number" value={car.mileage} onChange={handleChange} placeholder="Mileage" />
                                 <input name="fuelType" value={car.fuelType} onChange={handleChange} placeholder="Fuel Type" />
                                 <input name="transmission" value={car.transmission} onChange={handleChange} placeholder="Transmission" />
                                 <input name="engine" value={car.engine} onChange={handleChange} placeholder="Engine" />
                                 <input name="horsepower" className="type_number_input" type="number" value={car.horsepower} onChange={handleChange} placeholder="Horsepower" />
-                                <input name="features" value={car.features.join(',')} onChange={handleChange} placeholder="Features" />
+                                <input name="features" value={car.features.join(', ')} onChange={handleChange} placeholder="Features (comma-separated)" />
                                 <input name="owners" className="type_number_input" type="number" value={car.owners} onChange={handleChange} placeholder="Owners" />
                             </tr>
                         </tbody>
@@ -180,7 +181,7 @@ const AddCar = () => {
                     <button className='button' type="submit" onClick={handleSubmit}>Add Car</button>
                     <Link to='/'> <button className='button' type="button">Return Home</button></Link>
                 </div>
-            </div >
+            </div>
         </>
     );
 };

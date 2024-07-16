@@ -4,15 +4,12 @@ import './CarDetails.css'
 import { Link } from 'react-router-dom';
 import LastPage from '../../assets/home.png'
 const CarDetails = () => {
+
     const { id } = useParams<{ id: string }>();
 
-    const { data: cars, error, isLoading } = useGetCarQuery();
+    const { data } = useGetCarQuery();
 
-    if (isLoading) return <p>Yüklənir...</p>;
-
-    if (error) return <p>Xəta baş verdi!</p>;
-
-    const car = cars?.find((car: any) => car.id === Number(id));
+    const car = data?.find((car: any) => car.id === Number(id));
 
     if (!car) {
         return <p>Maşın tapılmadı.</p>;
@@ -38,8 +35,8 @@ const CarDetails = () => {
 
                 <div className='table_item_container'>
                     <table>
-                        <tr style={{ height: '50px'}}>
-                            <th style={{fontSize: '2rem', padding:'1rem'}}>Characteristics</th>
+                        <tr style={{ height: '50px' }}>
+                            <th style={{ fontSize: '2rem', padding: '1rem' }}>Characteristics</th>
                         </tr>
                         <div className='table_items_container'>
                             <tr className='table_items'>
