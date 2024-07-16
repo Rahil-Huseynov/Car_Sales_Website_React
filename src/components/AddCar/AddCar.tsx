@@ -64,14 +64,6 @@ const AddCar = () => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        dispatch(addCar(car));
-
-        if (!car.make || !car.model || !car.color || !car.fuelType || !car.transmission || !car.engine || car.features.length === 0) {
-            setError("Please fill in all required fields.");
-            return;
-        }
-        setError(null);
-
         setCar({
             id: 0,
             make: '',
@@ -88,6 +80,16 @@ const AddCar = () => {
             owners: 0,
             image: '',
         });
+
+        if (!car.image || !car.make || !car.model || !car.color || !car.fuelType || !car.transmission || !car.engine || car.features.length === 0) {
+            setError("Please fill in all required fields.");
+            return;
+        }
+        else {
+            setError('')
+            dispatch(addCar(car));
+            return;
+        }
     };
 
     return (
