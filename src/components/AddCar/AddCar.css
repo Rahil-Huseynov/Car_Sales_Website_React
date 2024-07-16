@@ -22,7 +22,6 @@ td {
 .table_item_container {
     display: flex;
     justify-content: center;
-    padding-bottom: 2rem;
 }
 
 .img_profil {
@@ -130,4 +129,14 @@ input::-webkit-inner-spin-button {
 
 .custom-select_add_car:focus {
     background: #3B3B3B;
+}
+
+.error-message-container{
+    display: flex;
+    justify-content: center;
+}
+
+.error-message{
+    color: red;
+    font-size: 2rem;
 }

@@ -25,6 +25,7 @@ interface ICar {
 
 const AddCar = () => {
     const dispatch = useDispatch();
+    const [error, setError] = useState<string | null>(null);
     const [car, setCar] = useState<ICar>({
         id: 0,
         make: '',
@@ -64,6 +65,13 @@ const AddCar = () => {
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         dispatch(addCar(car));
+
+        if (!car.make || !car.model || !car.color || !car.fuelType || !car.transmission || !car.engine || car.features.length === 0) {
+            setError("Please fill in all required fields.");
+            return;
+        }
+        setError(null);
+
         setCar({
             id: 0,
             make: '',
@@ -176,6 +184,9 @@ const AddCar = () => {
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div className='error-message-container'>
+                    {error && <p className='error-message'>{error}</p>}
                 </div>
                 <div className='send_button'>
                     <button className='button' type="submit" onClick={handleSubmit}>Add Car</button>
