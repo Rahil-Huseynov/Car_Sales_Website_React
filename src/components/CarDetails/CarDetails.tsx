@@ -1,23 +1,35 @@
 import { useParams } from 'react-router-dom';
-import { useAppSelector } from '../../redux/hooks';
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import './CarDetails.css';
 import { Link } from 'react-router-dom';
 import LastPage from '../../assets/home.png';
 import Edit from '../../assets/edit.png';
 import { useState } from 'react';
+import { updateCar } from '../../redux/slices/carSlices';
 
 const CarDetails = () => {
   const { id } = useParams<{ id: string }>();
+
+  const dispatch = useAppDispatch();
+
   const car = useAppSelector(state => state.cars.cars.find((car: any) => car.id === Number(id)));
 
   const [visible, setVisible] = useState(true);
+
   const [editableCar, setEditableCar] = useState(car);
 
   const handleEditClick = () => {
     setVisible(false);
   };
 
-  const handleSaveCancelClick = () => {
+
+  const handleSaveClick = () => {
+    dispatch(updateCar(editableCar));
+    setVisible(true);
+  };
+
+  const handleCancelClick = () => {
+    setEditableCar(car);
     setVisible(true);
   };
 
@@ -26,6 +38,20 @@ const CarDetails = () => {
       ...editableCar,
       [field]: e.target.value
     });
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setEditableCar({
+          ...editableCar,
+          image: reader.result as string,
+        });
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   if (!car) {
@@ -42,9 +68,21 @@ const CarDetails = () => {
       </div>
 
       <div className="car-details">
-        <div className='img_container'>
-          <img style={{ width: '300px' }} src={car.image} alt={`${car.make} ${car.model}`} />
-        </div>
+        {visible ? (
+          <>
+            <div className='img_container'>
+              <img style={{ width: '300px' }} src={car.image} alt={`${car.make} ${car.model}`} />
+            </div>
+          </>
+        ) : (
+          <>
+            <div className='img_container'>
+              <img className='img_profil' src={editableCar.image} alt="Car" />
+              <input className='img_add' name="image" type='file' onChange={handleImageChange} />
+            </div>
+          </>)}
+      </div>
+      <div className='make_model_container_edit'>
         <div className='make_model_container'>
           {visible ? (
             <>
@@ -163,8 +201,8 @@ const CarDetails = () => {
       </div>
       {!visible && (
         <div className='send_button'>
-          <button className='button' onClick={handleSaveCancelClick}>Save</button>
-          <button className='button' type="button" onClick={handleSaveCancelClick}>Cancel</button>
+          <button className='button' onClick={handleSaveClick}>Save</button>
+          <button className='button' type="button" onClick={handleCancelClick}>Cancel</button>
         </div>
       )}
     </>

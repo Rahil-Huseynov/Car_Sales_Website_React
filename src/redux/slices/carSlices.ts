@@ -40,6 +40,12 @@ const carsSlice = createSlice({
       state.cars.push(newCar);
       state.nextId += 1;
     },
+    updateCar: (state, action: PayloadAction<ICar>) => {
+      const index = state.cars.findIndex(car => car.id === action.payload.id);
+      if (index !== -1) {
+        state.cars[index] = action.payload;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(
@@ -51,5 +57,5 @@ const carsSlice = createSlice({
   },
 });
 
-export const { addCar } = carsSlice.actions;
+export const { addCar, updateCar } = carsSlice.actions;
 export default carsSlice.reducer;
