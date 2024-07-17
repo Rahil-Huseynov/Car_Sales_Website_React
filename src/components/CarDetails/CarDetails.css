@@ -14,7 +14,6 @@
     background-color: darkblue;
     border-radius: 10px;
     font-size: 2rem;
-
 }
 
 .img_container {
@@ -47,15 +46,88 @@ td {
 .table_items {
     display: grid;
     text-align: center;
-    width: 500px;
+    width: 100%; /* Ensure the table takes the full width */
 }
 
 .table_item {
     padding: 1rem;
 }
 
-.table_item_container{
+.table_item_container {
     display: flex;
     justify-content: center;
     padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.table_item input,
+.table_item select {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.custom-select_add_car {
+    width: 100%;
+}
+
+.Home_edit_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 2rem;
+}
+
+.make_container_edit {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.model_container_edit {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.make_choose {
+    width: 150px;
+    height: 50px;
+}
+
+.model_choose {
+    width: 140px;
+    height: 50px;
+}
+
+.year_container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.year_word {
+    font-size: 2rem;
+    color: red;
+    font-weight: 800;
+}
+
+.year_input {
+    height: 50px;
+}
+
+.price_container {
+    display: flex;
+    align-items: center;
+    border: 1px solid darkblue;
+    background-color: darkblue;
+    border-radius: 20px;
+    padding: 1rem;
+}
+
+.price_container_input {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }

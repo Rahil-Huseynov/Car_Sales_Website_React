@@ -88,7 +88,7 @@ const AddCar = () => {
     };
 
     return (
-        <>
+          <>
             <Link style={{ textDecoration: 'none' }} to='/'>
                 <div className='all_items_container'>
                     <div className='logo_container'>
@@ -113,7 +113,7 @@ const AddCar = () => {
                         <h2>Model:</h2>
                     </div>
                     <div className='make_model1'>
-                        <select className='input custom-select_add_car' name="make" id="cars" value={car.make} onChange={handleChange}>
+                        <select className='input custom_select_add_car_mark' name="make" id="cars" value={car.make} onChange={handleChange}>
                             <option value="" disabled>Choose the car make</option>
                             <option value="honda">Honda</option>
                             <option value="toyota">Toyota</option>
@@ -143,7 +143,7 @@ const AddCar = () => {
                 </div>
 
                 <div className='table_item_container'>
-                    <table>
+                    <table className='table'>
                         <thead>
                             <tr style={{ height: '50px' }}>
                                 <th style={{ fontSize: '2rem', padding: '1rem' }}>Characteristics</th>
@@ -161,23 +161,50 @@ const AddCar = () => {
                                 <td className='table_item'>Owners</td>
                             </tr>
                             <tr className='table_items'>
-                                <select className='custom-select_add_car' name="color" value={car.color} onChange={handleChange}>
-                                    <option value="" disabled>Select Color</option>
-                                    <option value="white">White</option>
-                                    <option value="silver">Silver</option>
-                                    <option value="blue">Blue</option>
-                                    <option value="red">Red</option>
-                                    <option value="green">Green</option>
-                                    <option value="black">Black</option>
-                                    <option value="gray">Gray</option>
-                                </select>
-                                <input name="mileage" className="type_number_input" type="number" value={car.mileage} onChange={handleChange} placeholder="Mileage" />
-                                <input name="fuelType" value={car.fuelType} onChange={handleChange} placeholder="Fuel Type" />
-                                <input name="transmission" value={car.transmission} onChange={handleChange} placeholder="Transmission" />
-                                <input name="engine" value={car.engine} onChange={handleChange} placeholder="Engine" />
-                                <input name="horsepower" className="type_number_input" type="number" value={car.horsepower} onChange={handleChange} placeholder="Horsepower" />
-                                <input name="features" value={car.features.join(', ')} onChange={handleChange} placeholder="Features (comma-separated)" />
-                                <input name="owners" className="type_number_input" type="number" value={car.owners} onChange={handleChange} placeholder="Owners" />
+                                <td>
+                                    <select className='custom-select_add_car' name="color" value={car.color} onChange={handleChange}>
+                                        <option value="" disabled>Select Color</option>
+                                        <option value="white">White</option>
+                                        <option value="silver">Silver</option>
+                                        <option value="blue">Blue</option>
+                                        <option value="red">Red</option>
+                                        <option value="green">Green</option>
+                                        <option value="black">Black</option>
+                                        <option value="gray">Gray</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input name="mileage" className="custom_add_car" type="number" value={car.mileage} onChange={handleChange} placeholder="Mileage" />
+                                </td>
+                                <td>
+                                    <select className='custom-select_add_car' name="fuelType" value={car.fuelType} onChange={handleChange}>
+                                        <option value="" disabled>Select Fuel Type</option>
+                                        <option value="gasoline">Gasoline</option>
+                                        <option value="diesel">Diesel</option>
+                                        <option value="electric">Electric</option>
+                                        <option value="hybrid">Hybrid</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select className='custom-select_add_car' name="transmission" value={car.transmission} onChange={handleChange}>
+                                        <option value="" disabled>Select Transmission</option>
+                                        <option value="manual">Manual</option>
+                                        <option value="automatic">Automatic</option>
+                                        <option value="semi-automatic">Semi-Automatic</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input className="custom_add_car" name="engine" value={car.engine} onChange={handleChange} placeholder="Engine" />
+                                </td>
+                                <td>
+                                    <input name="horsepower" className="custom_add_car" type="number" value={car.horsepower} onChange={handleChange} placeholder="Horsepower" />
+                                </td>
+                                <td>
+                                    <input className="custom_add_car " name="features" value={car.features.join(', ')} onChange={handleChange} placeholder="Features" />
+                                </td>
+                                <td>
+                                    <input name="owners" className="custom_add_car" type="number" value={car.owners} onChange={handleChange} placeholder="Owners" />
+                                </td>
                             </tr>
                         </tbody>
                     </table>

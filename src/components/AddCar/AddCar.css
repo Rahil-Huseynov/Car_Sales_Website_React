@@ -1,7 +1,6 @@
 table,
 th,
 td {
-    border: 1px solid white;
     border-collapse: collapse;
 }
 
@@ -15,9 +14,6 @@ td {
     width: 500px;
 }
 
-.table_item {
-    padding: 1rem;
-}
 
 .table_item_container {
     display: flex;
@@ -111,13 +107,10 @@ input::-webkit-inner-spin-button {
     color: white;
 }
 
-
-.custom-select_add_car {
-    position: relative;
-}
-
 .custom-select_add_car {
     appearance: none;
+    width: 100%;
+    height: 100%;
     -webkit-appearance: none;
     padding: 2px;
     background-color: #3B3B3B;
@@ -139,4 +132,9 @@ input::-webkit-inner-spin-button {
 .error-message{
     color: red;
     font-size: 2rem;
+}
+
+.custom_add_car{
+    width: 99%;
+    height: 98%;
 }
