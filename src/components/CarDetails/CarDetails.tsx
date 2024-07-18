@@ -142,7 +142,7 @@ const CarDetails = () => {
               </div>
               <div className='price_container'>
                 <div className='price_container_input'>
-                  <p className='year_word'>Price:</p>
+                  <p className='price_word'>Price:</p>
                   <input className='year_input' type='text' value={editableCar.price} onChange={(e) => handleChange(e, 'price')} />
                 </div>
                 <span style={{ fontSize: '2rem' }}>$</span>

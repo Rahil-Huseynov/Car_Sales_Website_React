@@ -113,6 +113,11 @@ td {
     font-weight: 800;
 }
 
+.price_word{
+    font-size: 2rem;
+    color: white;
+}
+
 .year_input {
     height: 50px;
 }
