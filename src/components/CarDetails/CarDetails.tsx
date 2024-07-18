@@ -4,8 +4,9 @@ import './CarDetails.css';
 import { Link } from 'react-router-dom';
 import LastPage from '../../assets/home.png';
 import Edit from '../../assets/edit.png';
+import Delete from '../../assets/delete.png'
 import { useState } from 'react';
-import { updateCar } from '../../redux/slices/carSlices';
+import { deleteCar, updateCar } from '../../redux/slices/carSlices';
 
 const CarDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -13,6 +14,7 @@ const CarDetails = () => {
   const dispatch = useAppDispatch();
 
   const car = useAppSelector(state => state.cars.cars.find((car: any) => car.id === Number(id)));
+
 
   const [visible, setVisible] = useState(true);
 
@@ -22,7 +24,9 @@ const CarDetails = () => {
     setVisible(false);
   };
 
-
+  const handledeleteClick = () => {
+    dispatch(deleteCar(car.id))
+  }
   const handleSaveClick = () => {
     dispatch(updateCar(editableCar));
     setVisible(true);
@@ -64,6 +68,11 @@ const CarDetails = () => {
         <Link to='/'><img style={{ width: '50px' }} src={LastPage} /></Link>
         {visible && (
           <img onClick={handleEditClick} style={{ width: '50px' }} src={Edit} />
+        )}
+        {!visible && (
+          <Link to = '/'>
+            <img style={{ width: '50px' }} onClick={handledeleteClick} src={Delete} alt="" />
+          </Link>
         )}
       </div>
 

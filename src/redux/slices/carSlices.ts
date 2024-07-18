@@ -46,6 +46,9 @@ const carsSlice = createSlice({
         state.cars[index] = action.payload;
       }
     },
+    deleteCar: (state, action: PayloadAction<number>) => {
+      state.cars = state.cars.filter(car => car.id !== action.payload);
+    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(
@@ -57,5 +60,5 @@ const carsSlice = createSlice({
   },
 });
 
-export const { addCar, updateCar } = carsSlice.actions;
+export const { addCar, updateCar,deleteCar } = carsSlice.actions;
 export default carsSlice.reducer;
