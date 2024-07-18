@@ -59,7 +59,7 @@ const CarDetails = () => {
   };
 
   if (!car) {
-    return <p>Maşın tapılmadı.</p>;
+    return <p>No data found !</p>;
   }
 
   return (
