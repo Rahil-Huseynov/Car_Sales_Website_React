@@ -70,7 +70,7 @@ const CarDetails = () => {
           <img onClick={handleEditClick} style={{ width: '50px' }} src={Edit} />
         )}
         {!visible && (
-          <Link to = '/'>
+          <Link to='/'>
             <img style={{ width: '50px' }} onClick={handledeleteClick} src={Delete} alt="" />
           </Link>
         )}
@@ -195,7 +195,15 @@ const CarDetails = () => {
                       </select>
                     </td>
                     <td className='table_item'><input type='text' value={editableCar.mileage} onChange={(e) => handleChange(e, 'mileage')} /></td>
-                    <td className='table_item'><input type='text' value={editableCar.fuelType} onChange={(e) => handleChange(e, 'fuelType')} /></td>
+                    <td className='table_item'>
+                      <select name="fuelType" value={editableCar.fuelType} onChange={(e) => handleChange(e, 'fuelType')} >
+                        <option value="" disabled>Select Fuel Type</option>
+                        <option value="gasoline">Gasoline</option>
+                        <option value="diesel">Diesel</option>
+                        <option value="electric">Electric</option>
+                        <option value="hybrid">Hybrid</option>
+                      </select>
+                    </td>
                     <td className='table_item'><input type='text' value={editableCar.transmission} onChange={(e) => handleChange(e, 'transmission')} /></td>
                     <td className='table_item'><input type='text' value={editableCar.engine} onChange={(e) => handleChange(e, 'engine')} /></td>
                     <td className='table_item'><input type='text' value={editableCar.horsepower} onChange={(e) => handleChange(e, 'horsepower')} /></td>

@@ -88,7 +88,7 @@ const AddCar = () => {
     };
 
     return (
-          <>
+        <>
             <Link style={{ textDecoration: 'none' }} to='/'>
                 <div className='all_items_container'>
                     <div className='logo_container'>
@@ -183,15 +183,9 @@ const AddCar = () => {
                                         <option value="diesel">Diesel</option>
                                         <option value="electric">Electric</option>
                                         <option value="hybrid">Hybrid</option>
-                                    </select>
-                                </td>
+                                    </select>                                </td>
                                 <td>
-                                    <select className='custom-select_add_car' name="transmission" value={car.transmission} onChange={handleChange}>
-                                        <option value="" disabled>Select Transmission</option>
-                                        <option value="manual">Manual</option>
-                                        <option value="automatic">Automatic</option>
-                                        <option value="semi-automatic">Semi-Automatic</option>
-                                    </select>
+                                    <input name="transmission" className="custom_add_car"  value={car.transmission} onChange={handleChange} placeholder="Transmission" />
                                 </td>
                                 <td>
                                     <input className="custom_add_car" name="engine" value={car.engine} onChange={handleChange} placeholder="Engine" />
