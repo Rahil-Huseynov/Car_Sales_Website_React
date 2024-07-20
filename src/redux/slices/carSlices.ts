@@ -41,10 +41,9 @@ const carsSlice = createSlice({
       state.nextId += 1;
     },
     updateCar: (state, action: PayloadAction<ICar>) => {
-      const index = state.cars.findIndex(car => car.id === action.payload.id);
-      if (index !== -1) {
-        state.cars[index] = action.payload;
-      }
+      state.cars = state.cars.map(car =>
+        car.id === action.payload.id ? action.payload : car
+      );
     },
     deleteCar: (state, action: PayloadAction<number>) => {
       state.cars = state.cars.filter(car => car.id !== action.payload);
@@ -60,5 +59,5 @@ const carsSlice = createSlice({
   },
 });
 
-export const { addCar, updateCar,deleteCar } = carsSlice.actions;
+export const { addCar, updateCar, deleteCar } = carsSlice.actions;
 export default carsSlice.reducer;
