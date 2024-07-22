@@ -38,10 +38,18 @@ const CarDetails = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>, field: string) => {
-    setEditableCar({
-      ...editableCar,
-      [field]: e.target.value
-    });
+    const { value } = e.target;
+    if (field === "features") {
+      setEditableCar({
+        ...editableCar,
+        features: value.split(',').map(feature => feature.trim())
+      });
+    } else {
+      setEditableCar({
+        ...editableCar,
+        [field]: e.target.value
+      });
+    }
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -206,7 +214,7 @@ const CarDetails = () => {
                     </td>
                     <td className='table_item'><input type='text' value={editableCar.transmission} onChange={(e) => handleChange(e, 'transmission')} /></td>
                     <td className='table_item'><input type='text' value={editableCar.engine} onChange={(e) => handleChange(e, 'engine')} /></td>
-                    <td className='table_item'><input type='number' value={editableCar.horsepower} onChange={(e) => handleChange(e, 'horsepower')} /></td>
+                    <td className='table_item'><input type='number'value={editableCar.horsepower} onChange={(e) => handleChange(e, 'horsepower')} /></td>
                     <td className='table_item'><input type='text' value={editableCar.features} onChange={(e) => handleChange(e, 'features')} /></td>
                     <td className='table_item'><input type='number' value={editableCar.owners} onChange={(e) => handleChange(e, 'owners')} /></td>
                   </>
